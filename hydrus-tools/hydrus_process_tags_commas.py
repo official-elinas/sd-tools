@@ -17,6 +17,9 @@ if not os.path.exists(new_tags_dir):
     os.mkdir(new_tags_dir)
 
 for file in os.listdir(original_tags_dir):
+    if not file.endswith('.txt'):
+        print(f"[INFO] {file} is not a text file, skipping.")
+        continue
     with open(f"{original_tags_dir}/{file}", 'rb') as f:
         lines = f.readlines()
         found_tags = []
@@ -55,5 +58,5 @@ for file in os.listdir(original_tags_dir):
 
         unique_tags = (list(dict.fromkeys(found_tags)))
         with open(f"{new_tags_dir}/{file.split('.')[0]}.txt", 'w', encoding='utf-8') as new_tag_file:
-            print(f'Updating tags for file: {file.split(".")[0]}.txt')
             new_tag_file.write((', '.join(t for t in unique_tags)))
+            print(f"[SUCCESS] Updating tags for file: {file.split('.')[0]}.txt")
