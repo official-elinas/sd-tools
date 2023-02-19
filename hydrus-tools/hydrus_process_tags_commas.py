@@ -29,6 +29,12 @@ for file in os.listdir(original_tags_dir):
         for line in lines:
             tag = line.strip().decode('utf-8')
 
+            # ignore these tags
+            # TODO: improve list
+            bad_tags = ['tagme', 'junk tag', 'meta:anonymous']
+            if any(tag == t for t in bad_tags):
+                continue
+
             if '_' in tag:
                 tag = tag.replace('_', ' ')
 
