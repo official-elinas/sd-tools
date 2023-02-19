@@ -8,7 +8,7 @@ parser.add_argument("-i", "--input_folder", help="Path to the original tags fold
 parser.add_argument("-o", "--output_folder", help="Path to the new tags folder", required=True)
 args = parser.parse_args()
 
-sys.argv = args
+# sys.argv = args
 
 original_tags_dir = Path(args.input_folder)
 new_tags_dir = Path(args.output_folder)
@@ -31,10 +31,6 @@ for file in os.listdir(original_tags_dir):
 
             if '_' in tag:
                 tag = tag.replace('_', ' ')
-
-            # ignore these tags
-            if 'tagme' in tag:
-                continue
 
             # only add one creator tag due to frequent dupes from Hydrus
             elif 'creator:' in tag and not creator_found:
