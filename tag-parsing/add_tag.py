@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='Replace/prepend the first word in 
 parser.add_argument('-i', '--input_dir', required=True, help='input directory')
 parser.add_argument('-o', '--output_dir', required=True, help='output directory')
 parser.add_argument('--add_tag', required=True, help='new tag to replace/prepend to first tag')
-parser.add_argument('--keep_tags', nargs='+', default=[], help='list of tags to keep that may be in the first tag spot')
+parser.add_argument('--keep_tags', nargs='+', default=[], help='comma separated list of tags to keep that may be in the first tag spot to keep')
 args = parser.parse_args()
 
 for filename in os.listdir(args.input_dir):
