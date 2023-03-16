@@ -8,8 +8,6 @@ parser.add_argument("-i", "--input_folder", help="Path to the original tags fold
 parser.add_argument("-o", "--output_folder", help="Path to the new tags folder", required=True)
 args = parser.parse_args()
 
-# sys.argv = args
-
 original_tags_dir = Path(args.input_folder)
 new_tags_dir = Path(args.output_folder)
 
@@ -41,7 +39,7 @@ for file in os.listdir(original_tags_dir):
             # only add one creator tag due to frequent dupes from Hydrus
             elif 'creator:' in tag and not creator_found:
                 # found_tags.append(tag)
-                found_tags.insert(0, tag.split(':')[1]) # remove the namespace add the artist to idx 0
+                found_tags.insert(0, tag.split(':')[1])  # remove the namespace add the artist to idx 0
                 creator_found = True
 
             # dupe tags can happen with underscores so don't add dupe tags
@@ -51,7 +49,7 @@ for file in os.listdir(original_tags_dir):
                 characters_idx += 1
 
             # get namespaced hydrus clothing tags and remove the namespace
-            elif 'clothing:' in tag:
+            elif 'clothing:' or 'series:' in tag:
                 found_tags.append(tag.split(':')[1])
 
             # get rid of remaining namespaced tags except creator/character and only numeric tags
