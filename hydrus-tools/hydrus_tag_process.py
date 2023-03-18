@@ -49,7 +49,7 @@ for file in os.listdir(original_tags_dir):
                 characters_idx += 1
 
             # get namespaced hydrus clothing tags and remove the namespace
-            elif 'clothing:' or 'series:' in tag:
+            elif ('clothing:' or 'series:') in tag:
                 found_tags.append(tag.split(':')[1])
 
             # get rid of remaining namespaced tags except creator/character and only numeric tags
