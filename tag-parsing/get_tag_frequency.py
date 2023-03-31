@@ -18,9 +18,11 @@ for file_name in os.listdir(args.input_dir):
             for item in items[1:]:
                 counts[item] += 1
 
-# Sort the counts in descending order of frequency and print the results
+# Sort the counts in descending order of frequency (count and percentage) save and print the results
 with open('found_tags.txt', 'w', encoding='utf-8') as tag_file:
     for item, count in sorted(counts.items(), key=lambda x: x[1], reverse=True):
-        write_format = f'{item}: {count}\n'
-        tag_file.write(write_format)
-    # print(f'{item}: {round(count/filecount, 2)*100}%')
+        image_count = f'{item}: {count}'
+        tag_file.write(image_count)
+        image_percent = f' - {((count / filecount) * 100):.2f}%'
+        tag_file.write(f"{image_percent}\n")
+        print(image_count + image_percent)
