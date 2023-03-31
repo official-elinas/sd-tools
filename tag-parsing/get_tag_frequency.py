@@ -10,7 +10,7 @@ counts = defaultdict(int)
 filecount = 0
 for file_name in os.listdir(args.input_dir):
     if file_name.endswith('.txt'):
-        with open(os.path.join(args.input_dir, file_name), encoding="utf8") as f:
+        with open(os.path.join(args.input_dir, file_name), encoding='utf8') as f:
             filecount += 1
             first_line = f.readline().strip()
             items = first_line.split(',')
@@ -24,5 +24,5 @@ with open('found_tags.txt', 'w', encoding='utf-8') as tag_file:
         image_count = f'{item}: {count}'
         tag_file.write(image_count)
         image_percent = f' - {((count / filecount) * 100):.2f}%'
-        tag_file.write(f"{image_percent}\n")
+        tag_file.write(f'{image_percent}\n')
         print(image_count + image_percent)
