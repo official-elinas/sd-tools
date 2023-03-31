@@ -26,3 +26,5 @@ with open('found_tags.txt', 'w', encoding='utf-8') as tag_file:
         image_percent = f' - {((count / filecount) * 100):.2f}%'
         tag_file.write(f'{image_percent}\n')
         print(image_count + image_percent)
+
+print(f"Saved tag info to {os.getcwd()}/found_tags.txt")
